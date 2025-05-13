@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Programming Portfolio</title>
+  <link rel="stylesheet" href="abid.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">Abid Khan</h1>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="themeToggle" title="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h2>Hello, I'm <span>Abid</span></h2>
+      <p>A passionate programmer building efficient and beautiful web applications.</p>
+      <a href="#projects" class="btn">View Projects</a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>I'm a computer science student with a passion for clean code and modern UI/UX. My focus is on front-end development, automation, and security.</p>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2>Projects</h2>
+
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="python">Python</button>
+        <button class="filter-btn" data-filter="api">API</button>
+      </div>
+
+      <div class="project-grid">
+        <div class="project-card" data-category="web">
+          <h3>Portfolio Website</h3>
+          <p>Responsive site built with HTML & CSS.</p>
+        </div>
+        <div class="project-card" data-category="python">
+          <h3>To-Do App</h3>
+          <p>Python app using Tkinter for task management.</p>
+        </div>
+        <div class="project-card" data-category="api">
+          <h3>Weather Dashboard</h3>
+          <p>Live weather app using OpenWeatherMap API.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <ul class="skill-list">
+        <li>HTML & CSS</li>
+        <li>JavaScript</li>
+        <li>Python</li>
+        <li>React</li>
+        <li>Git & GitHub</li>
+        <li>APIs</li>
+      </ul>
+    </div>
+  </section>
+  
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="_replyto" placeholder="Your email" required>
+        <textarea name="message" placeholder="Your message" required></textarea>
+        <button type="submit" class="btn">Send</button>
+      </form>
+    </div>
+  </section>
+  
+
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Abid Khan | All rights reserved</p>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const toggleBtn = document.getElementById('themeToggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      toggleBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    });
+
+    // Project filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-filter');
+
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        projectCards.forEach(card => {
+          const match = category === 'all' || card.dataset.category === category;
+          card.style.display = match ? 'block' : 'none';
+        });
+      });
+    });
+  </script>
+
+
+
+</body>
+
+</html>
